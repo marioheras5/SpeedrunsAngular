@@ -132,5 +132,8 @@
       }
     }
   },
-  "defaultProject": "SpeedrunsAngular"
+  "defaultProject": "SpeedrunsAngular",
+  "cli": {
+    "analytics": false
+  }
 }
