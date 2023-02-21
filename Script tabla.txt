@@ -1,0 +1,5 @@
+﻿CREATE TABLE [Users] (
+	[username] VARCHAR(20) PRIMARY KEY,
+	[password] VARCHAR(64)
+)
+
