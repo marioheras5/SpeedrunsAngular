@@ -1,18 +1,23 @@
-a.navbar-brand {
-  white-space: normal;
-  text-align: center;
-  word-break: break-all;
+a {
+  color: #6ceded;
 }
-
-html {
-  font-size: 14px;
-}
-@media (min-width: 768px) {
-  html {
-    font-size: 16px;
+  a:hover {
+    color: #6d85a5;
   }
+.searchbar:hover {
+  border-bottom: 2px solid #6d85a5;
+  transition: ease-in-out 0.15s;
 }
+.searchbar {
+  border-bottom: 2px solid #6ceded;
+}
+  .searchbar span {
+    margin-right: 0.5em;
+    color: #6ceded;
+  }
 
-.box-shadow {
-  box-shadow: 0 .25rem .75rem rgba(0, 0, 0, .05);
+.searchtext {
+  margin-left: 0.5em;
+  outline: none;
+  border: 0;
 }
