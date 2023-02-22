@@ -24,7 +24,8 @@ namespace SpeedrunsAngular.Controllers
         /// <param name="password"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool Login([FromForm] string username, [FromForm] string password)
+        [Route("login")]
+        public HttpResponseMessage Login([FromForm] string username, [FromForm] string password)
         {
             LoginActions loginActions = new LoginActions(_context);
             return loginActions.Login(username, password);
@@ -37,7 +38,8 @@ namespace SpeedrunsAngular.Controllers
         /// <param name="password"></param>
         /// <returns></returns>
         [HttpPost]
-        public bool Register([FromForm] string username, [FromForm] string password)
+        [Route("signup")]
+        public HttpResponseMessage Register([FromForm] string username, [FromForm] string password)
         {
             LoginActions loginActions = new LoginActions(_context);
             return loginActions.Register(username, password);

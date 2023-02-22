@@ -11,13 +11,13 @@ namespace SpeedrunsAngular.Actions
         {
             _context = context;
         }
-        public bool Login(string username, string password)
+        public HttpResponseMessage Login(string username, string password)
         {
             // Busco en base de datos si existe el usuario
             bool userExists = _context.users.Any(x => x.username == username);
             if (!userExists)
             {
-                return false;
+                return new HttpResponseMessage(System.Net.HttpStatusCode.BadRequest);
             }
 
             // Encripto la contraseña
@@ -26,15 +26,15 @@ namespace SpeedrunsAngular.Actions
 
             // Login satisfactorio
             bool success = _context.users.Any(x => x.username == username && password == hashedPass);
-            return success;
+            return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
         }
-        public bool Register(string username, string password)
+        public HttpResponseMessage Register(string username, string password)
         {
             // Busco en base de datos si existe el usuario
             bool userExists = _context.users.Any(x => x.username == username);
             if (userExists)
             {
-                return false;
+                return new HttpResponseMessage(System.Net.HttpStatusCode.BadRequest);
             }
 
             // Encripto la contraseña
@@ -44,7 +44,7 @@ namespace SpeedrunsAngular.Actions
             // Registro al usuario
             _context.users.Add(new Models.Users(username, hashedPass));
             _context.SaveChanges();
-            return true;
+            return new HttpResponseMessage(System.Net.HttpStatusCode.OK);
         }
     }
 }

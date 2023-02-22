@@ -1,23 +1,75 @@
-a {
-  color: #6ceded;
+a.title {
+  color: #EAEAEA;
+  text-transform: uppercase;
+  border-radius: 0;
+  background-color: #27232A;
 }
+
+a {
+  color: #A198A9;
+  padding-left: 0.8em !important;
+  padding-right: 0.8em !important;
+  background-color: #332F35;
+  border-radius: 0.5em;
+  font-weight: bold;
+}
+
   a:hover {
-    color: #6d85a5;
+    color: #D9D4D9;
+    background-color: #403A43;
   }
+  a:focus {
+    color: #D9D4D9;
+  }
+
+ul {
+  gap: 1.5em;
+}
+input {
+  background: none;
+  font-weight: bold;
+}
 .searchbar:hover {
-  border-bottom: 2px solid #6d85a5;
+  border-bottom: 2px solid #D4D4DE;
   transition: ease-in-out 0.15s;
 }
-.searchbar {
-  border-bottom: 2px solid #6ceded;
+textarea:focus, input:focus {
+  color: #D4D4DE;
 }
+.searchbar:has(input:focus) {
+  border-bottom: 2px solid #D4D4DE;
+}
+
+  .searchbar:has(input:focus) .search-icon {
+    color: #D4D4DE;
+  }
+
+.searchbar:hover .search-icon {
+  color: #D4D4DE;
+  transition: ease-in-out 0.15s;
+}
+
+.searchbar {
+  border-bottom: 2px solid #D4D4DE;
+  margin-right: 1.5em;
+}
+
   .searchbar span {
     margin-right: 0.5em;
-    color: #6ceded;
+    color: #D4D4DE;
   }
 
 .searchtext {
   margin-left: 0.5em;
   outline: none;
   border: 0;
+}
+
+.search-icon::after {
+  content: '\e8b6';
+}
+
+nav {
+  background-color: #27232A;
+  height: 4.5em;
 }
