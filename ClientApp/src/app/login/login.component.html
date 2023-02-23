@@ -1,13 +1,13 @@
 <body>
-  <div class="main">
-    <div class="title">Log in</div>
-    <div class="container-username">
-      <input class="username" type="text" name="username" placeholder="Username">
-    </div>
-    <div class="container-pass">
-      <input class="password" type="password" name="password" placeholder="Password">
-    </div>
-    <button class="login-btn" (click)="loginClick()">Login</button>
-    <div class="error"></div>
-  </div>
+    <form class="main">
+      <div class="title">Log in</div>
+      <div class="container-username">
+        <input class="username" type="text" name="username" placeholder="Username">
+      </div>
+      <div class="container-pass">
+        <input class="password" type="password" name="password" placeholder="Password">
+      </div>
+      <button type="submit" class="login-btn" (click)="loginClick()">Login</button>
+      <div class="error"></div>
+    </form>
 </body>

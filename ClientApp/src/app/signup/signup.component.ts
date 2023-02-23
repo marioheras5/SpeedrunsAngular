@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, EventEmitter, Output } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -16,17 +16,20 @@ export class SignupComponent {
     const passElement = document.getElementsByClassName('password')[0] as HTMLInputElement;
 
     var params = new HttpParams().set('username', userElement.value).set('password', passElement.value);
-    this.http.post<Response>(this.baseUrl + 'api/login/signup', params).subscribe(result => {
-      if (result.ok) {
+    this.http.post<any>(this.baseUrl + 'api/login/signup', params).subscribe(result => {
+      console.log(result);
+      if (result.statusCode == 200) {
         this.success();
       } else {
-        this.mostrarError(result.status);
+        this.mostrarError(result.statusCode);
       }
     }, error => {
       this.mostrarError(error);
     });
   }
   success() {
+    const userElement = document.getElementsByClassName('username')[0] as HTMLInputElement;
+    localStorage.setItem('token', userElement.value);
     this.router.navigate(['/']);
   }
   mostrarError(result: number) {

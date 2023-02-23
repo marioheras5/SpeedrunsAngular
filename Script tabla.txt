@@ -2,4 +2,19 @@
 	[username] VARCHAR(20) PRIMARY KEY,
 	[password] VARCHAR(64)
 )
-
+CREATE TABLE [Games] (
+	[id] INT PRIMARY KEY,
+	[name] VARCHAR(50)
+)
+CREATE TABLE [Speedrun] (
+	[id] INT PRIMARY KEY,
+	[id_game] INT,
+	[username] VARCHAR(20),
+	[country] VARCHAR(60),
+	[time] TIME,
+	[date] DATE,
+	[platform] VARCHAR(60),
+	[category] VARCHAR(150),
+	FOREIGN KEY ([id_game]) REFERENCES [Games]([id]),
+	FOREIGN KEY ([username]) REFERENCES [Users]([username])
+)

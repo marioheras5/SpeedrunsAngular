@@ -1,4 +1,4 @@
-import { Component, Inject } from '@angular/core';
+import { Component, Inject, EventEmitter , Output} from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -16,23 +16,27 @@ export class LoginComponent {
     const passElement = document.getElementsByClassName('password')[0] as HTMLInputElement;
 
     var params = new HttpParams().set('username', userElement.value).set('password', passElement.value);
-    this.http.post<Response>(this.baseUrl + 'api/login/login', params).subscribe(result => {
-      if (result.ok) {
+    this.http.post<any>(this.baseUrl + 'api/login/login', params).subscribe(result => {
+      if (result.statusCode == 200) {
         this.success();
       } else {
-        this.mostrarError(result.status);
+        this.mostrarError(result.statusCode);
       }
     }, error => {
       this.mostrarError(error);
     });
   }
   success() {
+    const userElement = document.getElementsByClassName('username')[0] as HTMLInputElement;
+    localStorage.setItem('token', userElement.value);
     this.router.navigate(['/']);
   }
   mostrarError(result: number) {
     var error = document.getElementsByClassName('error')[0] as HTMLDivElement;
     if (result == 400) {
       error.textContent = "Error: No existe ese usuario";
+    } else if (result == 404) {
+      error.textContent = "Error: Contraseña incorrecta";
     } else {
       error.textContent = "Error: Ha ocurrido un error al iniciar sesión";
     }
