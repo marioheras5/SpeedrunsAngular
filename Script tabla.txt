@@ -4,7 +4,9 @@
 )
 CREATE TABLE [Games] (
 	[id] INT PRIMARY KEY,
-	[name] VARCHAR(50)
+	[name] VARCHAR(50),
+	[shortName] VARCHAR(50),
+	[img] VARCHAR(100)
 )
 CREATE TABLE [Speedrun] (
 	[id] INT PRIMARY KEY,

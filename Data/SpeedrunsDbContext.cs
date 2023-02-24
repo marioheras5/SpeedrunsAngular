@@ -9,14 +9,8 @@ namespace SpeedrunsAngular.Data
         {
             
         }
-        protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
-        {
-            
-        }
-        protected override void OnModelCreating(ModelBuilder modelBuilder)
-        {
-            
-        }
         public DbSet<Users> users { get; set; }
+        public DbSet<Games> games { get; set; }
+        public DbSet<Speedruns> speedruns { get; set; }
     }
 }
