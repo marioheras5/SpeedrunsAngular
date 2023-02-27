@@ -1,5 +1,10 @@
 <body>
   <div class="main">
-    WIP
+    <ul class="games">
+      <li *ngFor="let game of games" id="game-{{game.id}}">
+        <img src="/{{game.img}}" />
+        {{game.name}}
+      </li>
+    </ul>
   </div>
 </body>
