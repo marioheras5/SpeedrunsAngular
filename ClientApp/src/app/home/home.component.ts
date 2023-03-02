@@ -7,15 +7,16 @@ import { HttpClient, HttpParams } from '@angular/common/http';
   styleUrls: ['./home.component.css']
 })
 export class HomeComponent {
-  public games: Game[] | undefined;
+  public games: Game[] = [];
   constructor( private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
-    this.getGames(0, 9);
+    this.games = this.getGames(0, 9);
   }
   getGames(page: number, size: number) {
     var params = new HttpParams().set('page', page.toString()).set('size', size.toString());
-    this.http.get<Game[]>(this.baseUrl + 'api/games/GetGames', { params: params }).subscribe(result => {
-      this.games = result;
+    this.http.get<Game[]>(this.baseUrl + 'api/game/GetGames', { params: params }).subscribe(result => {
+      return result;
     }, error => console.error(error));
+    return [];
   }
 }
 interface Game {

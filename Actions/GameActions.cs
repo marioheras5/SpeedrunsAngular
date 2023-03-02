@@ -22,13 +22,13 @@ namespace SpeedrunsAngular.Actions
             bool alreadyExists = _context.games.Any(x => x.name.Equals(name) || x.shortName.Equals(shortName));
             if (alreadyExists) return false;
 
-            string imgPath = Path.Combine(AppContext.BaseDirectory.Split("bin").First(), "Images", img.FileName);
+            string imgPath = Path.Combine(AppContext.BaseDirectory.Split("bin").First(), "Images", shortName + ".png");
             using (Stream stream = new FileStream(imgPath, FileMode.Create))
             {
                 img.CopyTo(stream);
             }
-            int id = _context.games.Max(x => x.id) + 1;
-            Games newGame = new Games(id, name, shortName, imgPath);
+            int id = _context.games.Any() ? _context.games.Max(x => x.id) + 1 : 1;
+            Games newGame = new Games(id, name, shortName, Path.Combine("Images", shortName + ".png"));
             _context.games.Add(newGame);
             _context.SaveChanges();
             return true;

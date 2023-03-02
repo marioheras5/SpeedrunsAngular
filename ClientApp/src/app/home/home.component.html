@@ -1,7 +1,7 @@
 <body>
   <div class="main">
     <ul class="games">
-      <li *ngFor="let game of games" id="game-{{game.id}}">
+      <li *ngFor="let game of games">
         <img src="/{{game.img}}" />
         {{game.name}}
       </li>
