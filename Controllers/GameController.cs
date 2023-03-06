@@ -26,7 +26,8 @@ namespace SpeedrunsAngular.Controllers
         public List<Games> GetGames(int offset, int len)
         {
             GameActions gameActions = new GameActions(_context);
-            return gameActions.GetGames(offset, len);
+            var cosa = gameActions.GetGames(offset, len);
+            return cosa;
         }
         /// <summary>
         /// Añade un juego a partir de un nombre, su abreviación y una imagen.

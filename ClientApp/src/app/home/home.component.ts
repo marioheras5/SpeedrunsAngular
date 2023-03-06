@@ -8,15 +8,19 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 })
 export class HomeComponent {
   public games: Game[] = [];
-  constructor( private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
-    this.games = this.getGames(0, 9);
+  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
+    var params = new HttpParams().set('offset', '0').set('len', '9');
+    this.http.get<Game[]>(this.baseUrl + 'api/game/GetGames', { params: params }).subscribe(result => {
+      this.games = result;
+    }, error => console.log(error));
   }
   getGames(page: number, size: number) {
-    var params = new HttpParams().set('page', page.toString()).set('size', size.toString());
+    var params = new HttpParams().set('offset', page.toString()).set('len', size.toString());
+    var games: Game[] = [];
     this.http.get<Game[]>(this.baseUrl + 'api/game/GetGames', { params: params }).subscribe(result => {
-      return result;
-    }, error => console.error(error));
-    return [];
+      games = result;
+    }, error => console.log(error));
+    return games;
   }
 }
 interface Game {
