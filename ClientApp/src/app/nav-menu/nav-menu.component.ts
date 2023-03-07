@@ -6,9 +6,18 @@ import { Component, Input } from '@angular/core';
   styleUrls: ['./nav-menu.component.css']
 })
 export class NavMenuComponent {
+  public timeout = 0 as any;
   constructor() {
   }
   isLoggedIn() {
     return localStorage.getItem('token') != null;
+  }
+  keyPress(event: KeyboardEvent) {
+    clearTimeout(this.timeout);
+    this.timeout = setTimeout(this.search, 500);
+  }
+  search() {
+    const searchtext = document.getElementsByClassName('searchtext')[0] as HTMLInputElement;
+    console.log(searchtext.value);
   }
 }

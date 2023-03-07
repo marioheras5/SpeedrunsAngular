@@ -1,5 +1,6 @@
 import { Component, Inject, EventEmitter, Output } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-home',
@@ -8,20 +9,28 @@ import { HttpClient, HttpParams } from '@angular/common/http';
 })
 export class HomeComponent {
   public games: Game[] = [];
-  constructor(private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
+  public offset: number = 0;
+  public len: number = 9;
+  constructor(private router: Router, private http: HttpClient, @Inject('BASE_URL') private baseUrl: string) {
     var params = new HttpParams().set('offset', '0').set('len', '9');
     this.http.get<Game[]>(this.baseUrl + 'api/game/GetGames', { params: params }).subscribe(result => {
       this.games = result;
     }, error => console.log(error));
   }
-  getGames(page: number, size: number) {
-    var params = new HttpParams().set('offset', page.toString()).set('len', size.toString());
-    var games: Game[] = [];
+  getGames() {
+    this.offset += 9;
+    this.len += 9;
+    var params = new HttpParams().set('offset', this.offset.toString()).set('len', this.len.toString());
     this.http.get<Game[]>(this.baseUrl + 'api/game/GetGames', { params: params }).subscribe(result => {
-      games = result;
+      this.games.push(...result);
     }, error => console.log(error));
-    return games;
   }
+  onClick(event: Event) {
+    var elemento = event.target || event.srcElement || event.currentTarget as any;
+    var id = elemento.attributes.id.value;
+    this.router.navigate(["/speedruns"], { queryParams: { name: id} });
+  }
+  
 }
 interface Game {
   id: number;

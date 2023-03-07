@@ -1,15 +1,24 @@
 <body>
-  <form class="main">
-    <div class="title">Añadir juego</div>
-    <div class="container-name">
-      <input class="name" type="text" name="name" placeholder="Nombre del juego">
-    </div>
-    <div class="container-shortname">
-      <input class="shortname" type="text" name="shortname" placeholder="Abreviación (Nombre corto)">
-    </div>
-    <div class="container-img">
-      <input class="img" type="file" name="img" accept="image/png" >
-    </div>
-    <button type="submit" class="login-btn" (click)="addGame()">Añadir</button>
-  </form>
+  <div class="main">
+    <form class="add">
+      <div class="title">Añadir juego</div>
+      <div class="container-name">
+        <input class="name" type="text" name="name" placeholder="Nombre del juego">
+      </div>
+      <div class="container-shortname">
+        <input class="shortname" type="text" name="shortname" placeholder="Abreviación (Nombre corto)">
+      </div>
+      <div class="container-img">
+        <input class="img" type="file" name="img" accept="image/png">
+      </div>
+      <button type="submit" class="login-btn" (click)="addGame()">Añadir</button>
+    </form>
+    <form class="remove">
+      <div class="title">Eliminar juego</div>
+      <div class="container-name">
+        <input class="name" type="text" name="name" placeholder="Id del juego">
+      </div>
+      <button type="submit" class="login-btn" (click)="removeGame()">Eliminar</button>
+    </form>
+  </div>
 </body>

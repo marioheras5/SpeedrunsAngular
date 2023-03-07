@@ -23,6 +23,23 @@ export class ProfileComponent {
     formData.append('img', imgFile);
     this.http.post<boolean>(this.baseUrl + 'api/game/AddGame', formData).subscribe(result => {
       console.log(result);
+      if (result) {
+        this.router.navigate(['/']);
+      }
+    }, error => {
+      console.log(error);
+    });
+  }
+  removeGame() {
+    const idElement = document.getElementsByClassName('id')[0] as HTMLInputElement;
+
+    var formData = new FormData();
+    formData.append('id', idElement.value);
+    this.http.post<boolean>(this.baseUrl + 'api/game/RemoveGame', formData).subscribe(result => {
+      console.log(result);
+      if (result) {
+        this.router.navigate(['/']);
+      }
     }, error => {
       console.log(error);
     });

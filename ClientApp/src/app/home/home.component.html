@@ -1,11 +1,11 @@
 <body>
   <div class="main">
-    <p *ngIf="!games?.length"><em>Cargando...</em></p>
+    <div *ngIf="!games?.length" class="loader"></div>
     <ul class="games">
       <li *ngFor="let game of games">
-        <div id="{{game.shortName}}">
-          <img src="{{game.img}}" />
-          {{game.name}}
+        <div (click)="onClick($event)" id='{{game.shortName}}'>
+          <img id='{{game.shortName}}' src="{{game.img}}" />
+          <div id='{{game.shortName}}' class="gamename">{{game.name}}</div>
         </div>
       </li>
     </ul>
