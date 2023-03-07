@@ -1,6 +1,10 @@
 <body>
   <div class="main">
     <div *ngIf="!game" class="loader"></div>
-    <div class="game">{{game.name}}</div>
+    <div class="title">{{game.name}}</div>
+    <div class="body">
+      <div class="table"></div>
+      <div class="actions"></div>
+    </div>
   </div>
 </body>
