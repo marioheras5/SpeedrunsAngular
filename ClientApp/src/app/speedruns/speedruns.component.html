@@ -1,3 +1,6 @@
 <body>
-  <div class="main"></div>
+  <div class="main">
+    <div *ngIf="!game" class="loader"></div>
+    <div class="game">{{game.name}}</div>
+  </div>
 </body>

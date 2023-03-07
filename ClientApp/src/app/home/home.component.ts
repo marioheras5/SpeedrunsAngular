@@ -18,8 +18,6 @@ export class HomeComponent {
     }, error => console.log(error));
   }
   getGames() {
-    this.offset += 9;
-    this.len += 9;
     var params = new HttpParams().set('offset', this.offset.toString()).set('len', this.len.toString());
     this.http.get<Game[]>(this.baseUrl + 'api/game/GetGames', { params: params }).subscribe(result => {
       this.games.push(...result);

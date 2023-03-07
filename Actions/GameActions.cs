@@ -18,6 +18,10 @@ namespace SpeedrunsAngular.Actions
         {
             return _context.games.Skip(offset).Take(len).ToList();
         }
+        public Games GetGame(string shortName)
+        {
+            return _context.games.First(x => x.shortName == shortName);
+        }
         public bool AddGame(string name, string shortName, IFormFile img)
         {
             bool alreadyExists = _context.games.Any(x => x.name.Equals(name) || x.shortName.Equals(shortName));

@@ -26,8 +26,18 @@ namespace SpeedrunsAngular.Controllers
         public List<Games> GetGames(int offset, int len)
         {
             GameActions gameActions = new GameActions(_context);
-            var cosa = gameActions.GetGames(offset, len);
-            return cosa;
+            return gameActions.GetGames(offset, len);
+        }
+        /// <summary>
+        /// Obtiene un juego
+        /// </summary>
+        /// <returns></returns>
+        [HttpGet]
+        [Route("GetGame")]
+        public Games GetGame(string shortName)
+        {
+            GameActions gameActions = new GameActions(_context);
+            return gameActions.GetGame(shortName);
         }
         /// <summary>
         /// Añade un juego a partir de un nombre, su abreviación y una imagen.
@@ -48,7 +58,7 @@ namespace SpeedrunsAngular.Controllers
         /// <param name="name"></param>
         /// <param name="shortName"></param>
         /// <param name="img"></param>
-        [HttpPost]
+        [HttpDelete]
         [Route("RemoveGame")]
         public bool RemoveGame([FromForm] int id)
         {
