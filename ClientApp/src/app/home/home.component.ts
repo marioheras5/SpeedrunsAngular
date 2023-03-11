@@ -1,4 +1,4 @@
-import { Component, Inject, EventEmitter, Output } from '@angular/core';
+import { Component, Inject, EventEmitter, Output, ViewChild, ElementRef, HostListener } from '@angular/core';
 import { HttpClient, HttpParams } from '@angular/common/http';
 import { Router } from '@angular/router';
 
@@ -16,6 +16,7 @@ export class HomeComponent {
     this.http.get<Game[]>(this.baseUrl + 'api/game/GetGames', { params: params }).subscribe(result => {
       this.games = result;
     }, error => console.log(error));
+
   }
   getGames() {
     var params = new HttpParams().set('offset', this.offset.toString()).set('len', this.len.toString());
@@ -28,7 +29,14 @@ export class HomeComponent {
     var id = elemento.attributes.id.value;
     this.router.navigate(["/speedruns"], { queryParams: { name: id} });
   }
-  
+  @HostListener('window:scroll', ['$event'])
+  onWindowScroll(event: any) {
+    if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {
+      this.offset += 9;
+      this.len += 9;
+      this.getGames();
+    }
+  }
 }
 interface Game {
   id: number;
