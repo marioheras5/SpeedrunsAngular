@@ -33,7 +33,6 @@ export class HomeComponent {
   onWindowScroll(event: any) {
     if (window.innerHeight + window.pageYOffset >= document.body.offsetHeight) {
       this.offset += 9;
-      this.len += 9;
       this.getGames();
     }
   }

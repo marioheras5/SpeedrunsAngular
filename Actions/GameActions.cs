@@ -16,7 +16,7 @@ namespace SpeedrunsAngular.Actions
         }
         public List<Games> GetGames(int offset, int len)
         {
-            return _context.games.Skip(offset).Take(len).ToList();
+            return _context.games.OrderBy(x => x.id).Skip(offset).Take(len).ToList();
         }
         public Games GetGame(string shortName)
         {

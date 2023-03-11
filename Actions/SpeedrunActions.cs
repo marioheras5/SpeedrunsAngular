@@ -15,7 +15,7 @@ namespace SpeedrunsAngular.Actions
         }
         public List<Speedruns> GetSpeedruns(string shortName, int offset, int len)
         {
-            return _context.speedruns.Where(x => x.game.shortName == shortName).Skip(offset).Take(len).ToList();
+            return _context.speedruns.OrderBy(x => x.time).Where(x => x.game.shortName == shortName).Skip(offset).Take(len).ToList();
         }
         public bool AddSpeedrun(string username, string shortName, string country, TimeSpan time, DateTime date, string platform, string category)
         {
