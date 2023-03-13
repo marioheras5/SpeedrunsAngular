@@ -16,6 +16,9 @@ export class NavMenuComponent {
     clearTimeout(this.timeout);
     this.timeout = setTimeout(this.search, 500);
   }
+  deslogearse() {
+    localStorage.removeItem('token');
+  }
   search() {
     const searchtext = document.getElementsByClassName('searchtext')[0] as HTMLInputElement;
     console.log(searchtext.value);

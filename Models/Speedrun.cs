@@ -4,19 +4,8 @@ using System.ComponentModel.DataAnnotations.Schema;
 
 namespace SpeedrunsAngular.Models
 {
-    public class Speedruns
+    public class Speedrun
     {
-        public Speedruns(int id, int id_game, string username, string country, TimeSpan time, DateTime date, string platform, string category)
-        {
-            this.id = id;
-            this.id_game = id_game;
-            this.username = username;
-            this.country = country;
-            this.time = time;
-            this.date = date;
-            this.platform = platform;
-            this.category = category;
-        }
         [Key]
         public int id { get; set; }
         [ForeignKey("game")]

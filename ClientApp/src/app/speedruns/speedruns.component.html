@@ -3,8 +3,49 @@
     <div *ngIf="!game" class="loader"></div>
     <div class="title">{{game.name}}</div>
     <div class="body">
-      <div class="table"></div>
-      <div class="actions"></div>
+      <div class="actions">
+        <ul class="navbar-nav filters">
+          <li class="nav-item category" *ngFor="let category of categories">
+            <a class="nav-link" (click)="changeCategory($event)">{{category}}</a>
+          </li>
+        </ul>
+        <ul class="navbar-nav buttons">
+          <li class="nav-item addSpeedrun" (click)="addSpeedrun($event)">
+            <a class="nav-link">+ Añadir speedrun</a>
+          </li>
+          <li class="searchSpeedrun">
+            <div class="searchbar d-flex justify-content-center align-items-center text-center">
+              <input (keypress)="keyPress($event)" class="searchtext" id="searchtextuser" type="text" placeholder="Busca un usuario..." />
+              <span class="search-icon material-symbols-outlined"></span>
+            </div>
+          </li>
+        </ul>
+      </div>
+      <div class="table">
+        <div *ngIf="!speedruns?.length" class="loader"></div>
+        <table *ngIf="speedruns.length">
+          <thead>
+            <tr>
+              <th>#</th>
+              <th>Usuario</th>
+              <th>País</th>
+              <th>Tiempo</th>
+              <th>Fecha</th>
+              <th>Plataforma</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr *ngFor="let speedrun of speedruns">
+              <td>{{speedrun.position}}</td>
+              <td>{{speedrun.username}}</td>
+              <td>{{speedrun.country}}</td>
+              <td>{{speedrun.time}}</td>
+              <td>{{speedrun.date}}</td>
+              <td>{{speedrun.platform}}</td>
+            </tr>
+          </tbody>
+        </table>
+      </div>
     </div>
   </div>
 </body>

@@ -1,0 +1,38 @@
+<body>
+  <div class="main">
+    <form class="add">
+      <div class="title">Añadir speedrun</div>
+      <div class="container-shortname">
+        <input class="user" type="text" name="user" placeholder="Usuario: {{username}}" disabled>
+      </div>
+      <div class="container-name">
+        <input class="name" type="text" name="name" placeholder="Juego: {{gamename}}" disabled>
+      </div>
+      <div class="container-country">
+        <input class="country" type="text" name="country" placeholder="País">
+      </div>
+      <div class="container-time">
+        <input class="time" type="text" name="time" placeholder="Tiempo">
+      </div>
+      <div class="container-platform">
+        <select id="platform" name="platform">
+          <option value="">-- Selecciona una plataforma --</option>
+          <option value="n64">Nintendo 64</option>
+          <option value="wii">WiiVC</option>
+          <option value="ds">Nintendo DS</option>
+        </select>
+      </div>
+      <div class="container-category">
+        <select id="category" name="category">
+          <option value="">-- Selecciona una categoría --</option>
+          <option value="0star">0 Estrellas</option>
+          <option value="1star">1 Estrella</option>
+          <option value="16star">16 Estrellas</option>
+          <option value="70star">70 Estrellas</option>
+          <option value="120star">120 Estrellas</option>
+        </select>
+      </div>
+      <button type="submit" class="login-btn" (click)="addSpeedrun()">Añadir</button>
+    </form>
+  </div>
+</body>

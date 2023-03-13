@@ -1,0 +1,43 @@
+body {
+  background-color: #464247;
+}
+
+.main {
+  height: calc(100vh - 4.5em);
+  display: flex;
+  justify-content: center;
+  gap: 5em;
+  align-items: center;
+  flex-direction: column;
+}
+
+form {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding: 1em;
+  border: 3px solid #27232A;
+  gap: 1em;
+}
+
+.title {
+  color: #EAEAEA;
+  font-weight: bold;
+  font-size: 1em;
+  border-bottom: 3px solid #27232A;
+  text-transform: uppercase;
+  justify-self: flex-start;
+}
+
+input, textarea {
+  color: #D4D4DE;
+  border: 0;
+  border-bottom: 2px solid #27232A;
+  background: none;
+  font-weight: bold;
+}
+
+  textarea:focus, input:focus {
+    color: #D4D4DE;
+  }

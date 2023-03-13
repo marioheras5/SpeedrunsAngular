@@ -11,6 +11,6 @@ namespace SpeedrunsAngular.Data
         }
         public DbSet<Users> users { get; set; }
         public DbSet<Games> games { get; set; }
-        public DbSet<Speedruns> speedruns { get; set; }
+        public DbSet<Speedrun> speedrun { get; set; }
     }
 }
